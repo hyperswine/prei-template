@@ -1,1 +1,3 @@
-# prei-template
+# Prei Template
+
+Exactly.
