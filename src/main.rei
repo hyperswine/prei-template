@@ -1,19 +1,25 @@
 # THIS FILE DEFINES YOUR MAIN FUNCTION'S NAMESPACE
 
-fn main() -> Status {
+// executable entry point (after runtime initialisation)
+main: () -> Status {
     println("Hello, World!")
 }
 
-data World = ()
+// empty pure object
+World: ()
 
-impl World {
+// extension block
+World: extend {
     // system fn's are called on all instances
-    system fn globalise() { println("The world just got bigger") }
+    globalise: system () => println("The world just got bigger")
 }
 
+// unit test
 @test
-fn globalise_world() {
+globalise_world: () {
+    // for pure objects, simply returns the obj itself. For data objects, simply the default constructor
     let old_world = World()
     let new_world = World()
+    // call World's associated system fn to operate on all World instances
     World::globalise()
 }
